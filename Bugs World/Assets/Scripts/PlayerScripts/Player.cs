@@ -15,6 +15,10 @@ public class Player : MonoBehaviour
     public bool isRunPressed, isMovementPressed;
     [SerializeField] private float walkMultiplier = 2f;
     [SerializeField] private float runMultiplier = 3f;
+
+    [SerializeField] private float rotationPower = 1f;
+    private Transform _camera;
+    private Quaternion _camRot;
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
@@ -25,6 +29,8 @@ public class Player : MonoBehaviour
         _playerInputsActions.Player.Movement.performed += OnMovementInput;
         _playerInputsActions.Player.Run.started += OnRun;
         _playerInputsActions.Player.Run.canceled += OnRun;
+        
+        _camera = Camera.main.transform;
     }
 
     private void OnRun(InputAction.CallbackContext context)
@@ -55,6 +61,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerRotation();
+        
         if (isRunPressed)
         {
             appliedMovement.x = _currentRunMovement.x;
@@ -65,11 +73,29 @@ public class Player : MonoBehaviour
             appliedMovement.x = _currentMovement.x;
             appliedMovement.z = _currentMovement.z;
         }
+
         
-        _playerController.Move(appliedMovement);
+        _playerController.Move(appliedMovement * Time.deltaTime);
     }
 
-    
+
+   private void PlayerRotation()
+   {
+       Vector3 camForward = _camera.forward;
+       camForward.y = 0f;
+       _camRot = Quaternion.LookRotation(camForward);
+       
+        Quaternion currentRotation = transform.rotation;
+        if (isMovementPressed)
+        {
+            float targetAngle = Mathf.Atan2(_inputsVector.x, _inputsVector.y) * Mathf.Rad2Deg;
+            //Rotation créer avec le movement du joueur
+            Quaternion rot = Quaternion.Euler(0f, targetAngle, 0f);
+            //Rotation final slerp
+           transform.rotation = Quaternion.Slerp(currentRotation, rot, rotationPower * Time.deltaTime);
+        }
+
+   }
     
     private void OnEnable()
     {
