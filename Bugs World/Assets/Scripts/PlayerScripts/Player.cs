@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         }
 
         
-        _playerController.Move(appliedMovement * Time.deltaTime);
+        _playerController.Move(appliedMovement);
     }
 
 
@@ -88,7 +88,8 @@ public class Player : MonoBehaviour
         Quaternion currentRotation = transform.rotation;
         if (isMovementPressed)
         {
-            float targetAngle = Mathf.Atan2(_inputsVector.x, _inputsVector.y) * Mathf.Rad2Deg;
+            float targetAngle = Mathf.Atan2(appliedMovement.x, appliedMovement.z) * Mathf.Rad2Deg;
+          
             //Rotation créer avec le movement du joueur
             Quaternion rot = Quaternion.Euler(0f, targetAngle, 0f);
             //Rotation final slerp

@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _characterController.Move(_velocity);
+        _characterController.Move(_velocity * Time.deltaTime);
     }
     public void Move (Vector3 velocity)
     {

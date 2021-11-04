@@ -23,7 +23,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""558eb181-bf28-4a6b-83ad-f90dee2eea6e"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
                 },
                 {
@@ -96,7 +96,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""id"": ""58084020-62c9-4dff-8050-f9652d9ffaaf"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
