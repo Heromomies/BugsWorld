@@ -10,6 +10,9 @@ public class EncyclopediaManager : MonoBehaviour
     public GameObject panel;
     public TextMeshProUGUI feedbackEncyclopedia;
     public int nmbInTheCollection = 10;
+
+    public List<GameObject> placesForInsect;
+    
     private int _collectionFull;
 
     #region Singleton
@@ -31,21 +34,15 @@ public class EncyclopediaManager : MonoBehaviour
     {
         //si l'objet n'est pas trouvé, on le trouve et on l'affiche dans l'encyclopédie
         if (!obj.found)
-        {
-            feedbackEncyclopedia.text = $"You find a {obj.name}";
+        { 
+            feedbackEncyclopedia.text = $"You find a {obj.name}"; 
             StartCoroutine(WaitForText());
-           /*Debug.Log("le nombre de mon insecte est : " + obj.id);
-            Debug.Log("le nombre de la place est : " + panel.GetComponentInChildren<PlaceID>().id);*/
-            if (obj.id == panel.GetComponentInChildren<PlaceID>().id)
-            {
-                panel.GetComponentInChildren<PlaceID>().GetComponent<Image>().sprite = obj.image;
-                panel.GetComponentInChildren<PlaceID>().GetComponentInChildren<TextMeshProUGUI>().text = obj.name;
-            }
-            while(obj.id != panel.GetComponentInChildren<PlaceID>().id)
-            {
-                Debug.Log ("Je tourne en boucle");
-                panel.GetComponentInChildren<PlaceID>().id++;
-            }
+
+            placesForInsect[obj.id].GetComponent<Image>().sprite = obj.image;
+            placesForInsect[obj.id].GetComponentInChildren<TextMeshProUGUI>().text = obj.name;
+            Debug.Log("le nombre de mon insecte est : " + obj.id);
+            Debug.Log("le nombre de la place est : " + placesForInsect[obj.id]);
+
             obj.found = true;
             _collectionFull++;
         }
@@ -60,6 +57,7 @@ public class EncyclopediaManager : MonoBehaviour
         if (_collectionFull >= nmbInTheCollection)
         {
            //TODO fin du jeu
+           Debug.Log("J'ai trouvé tous les insectes");
         }
     }
     IEnumerator WaitForText()
