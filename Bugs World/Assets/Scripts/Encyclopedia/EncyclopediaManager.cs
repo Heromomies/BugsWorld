@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EncyclopediaManager : MonoBehaviour
 {
@@ -33,7 +34,18 @@ public class EncyclopediaManager : MonoBehaviour
         {
             feedbackEncyclopedia.text = $"You find a {obj.name}";
             StartCoroutine(WaitForText());
-            Debug.Log("found");
+           /*Debug.Log("le nombre de mon insecte est : " + obj.id);
+            Debug.Log("le nombre de la place est : " + panel.GetComponentInChildren<PlaceID>().id);*/
+            if (obj.id == panel.GetComponentInChildren<PlaceID>().id)
+            {
+                panel.GetComponentInChildren<PlaceID>().GetComponent<Image>().sprite = obj.image;
+                panel.GetComponentInChildren<PlaceID>().GetComponentInChildren<TextMeshProUGUI>().text = obj.name;
+            }
+            while(obj.id != panel.GetComponentInChildren<PlaceID>().id)
+            {
+                Debug.Log ("Je tourne en boucle");
+                panel.GetComponentInChildren<PlaceID>().id++;
+            }
             obj.found = true;
             _collectionFull++;
         }

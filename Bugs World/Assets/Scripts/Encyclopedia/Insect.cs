@@ -8,5 +8,6 @@ public class Insect : ScriptableObject
     public Sprite image;
     public new string name;
     public bool found;
-    
+
+    public int id;
 }
