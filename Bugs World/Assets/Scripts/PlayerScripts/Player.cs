@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float runMultiplier = 3f;
 
     public float rotationPower = 1f;
-    public Transform camera;
-    public Quaternion camRot;
+    //public Transform camera;
+   // public Quaternion camRot;
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         _playerInputsActions.Player.Run.started += OnRun;
         _playerInputsActions.Player.Run.canceled += OnRun;
         
-        camera = Camera.main.transform;
+        //camera = Camera.main.transform;
     }
 
     private void OnRun(InputAction.CallbackContext context)

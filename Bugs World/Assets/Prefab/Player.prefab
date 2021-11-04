@@ -134,11 +134,9 @@ MonoBehaviour:
   appliedMovement: {x: 0, y: 0, z: 0}
   isRunPressed: 0
   isMovementPressed: 0
-  walkMultiplier: 2
-  runMultiplier: 5
+  walkMultiplier: 4
+  runMultiplier: 8
   rotationPower: 15
-  camera: {fileID: 0}
-  camRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &7216021332785205100
 MonoBehaviour:
   m_ObjectHideFlags: 0
