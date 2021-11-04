@@ -6,7 +6,7 @@ using UnityEngine;
 public class Insect : ScriptableObject
 {
     public Sprite image;
-    public string name;
+    public new string name;
     public bool found;
     
 }
