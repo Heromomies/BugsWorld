@@ -5,15 +5,23 @@ using UnityEngine.EventSystems;
 
 public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public string header, content;
+	public static LTDescr delay;
+	public string header;
+	
+	[Multiline()]
+	public string content;
 	
 	public void OnPointerEnter(PointerEventData eventData)
 	{
-		TooltipSystem.Show(header, content);
+		delay = LeanTween.delayedCall(0.5f, () =>
+		{
+			TooltipSystem.Show(header, content);
+		});
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
+		LeanTween.cancel(delay.uniqueId);
 		TooltipSystem.Hide();
 	}
 }

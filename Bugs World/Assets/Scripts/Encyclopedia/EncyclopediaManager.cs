@@ -40,8 +40,7 @@ public class EncyclopediaManager : MonoBehaviour
 
             placesForInsect[obj.id].GetComponent<Image>().sprite = obj.image;
             placesForInsect[obj.id].GetComponentInChildren<TextMeshProUGUI>().text = obj.name;
-            Debug.Log("le nombre de mon insecte est : " + obj.id);
-            Debug.Log("le nombre de la place est : " + placesForInsect[obj.id]);
+            placesForInsect[obj.id].GetComponent<TooltipTrigger>().enabled = false;
 
             obj.found = true;
             _collectionFull++;
