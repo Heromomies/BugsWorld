@@ -12,15 +12,20 @@ public class Player : MonoBehaviour
     public Vector3 currentMovement, currentRunMovement;
     public Vector2 inputsVector;
     public Vector3 appliedMovement;
-    public bool isRunPressed, isMovementPressed;
+    public bool isRunPressed, isMovementPressed, isInteractionPressed;
     [SerializeField] private float walkMultiplier = 2f;
     [SerializeField] private float runMultiplier = 3f;
 
     public float rotationPower = 1f;
+
+    private static Player playerInstance;
+    public static Player instance => playerInstance;
+
     //public Transform camera;
    // public Quaternion camRot;
     private void Awake()
     {
+        playerInstance = this;
         _playerController = GetComponent<PlayerController>();
         //Player Inputs callback 
         _playerInputsActions = new PlayerInputsActions();
@@ -29,8 +34,14 @@ public class Player : MonoBehaviour
         _playerInputsActions.Player.Movement.performed += OnMovementInput;
         _playerInputsActions.Player.Run.started += OnRun;
         _playerInputsActions.Player.Run.canceled += OnRun;
-        
+        _playerInputsActions.Player.Interaction.started += OnInteraction;
+        _playerInputsActions.Player.Interaction.canceled += OnInteraction;
         //camera = Camera.main.transform;
+    }
+
+    private void OnInteraction(InputAction.CallbackContext context)
+    {
+        isInteractionPressed = context.ReadValueAsButton();
     }
 
     private void OnRun(InputAction.CallbackContext context)
