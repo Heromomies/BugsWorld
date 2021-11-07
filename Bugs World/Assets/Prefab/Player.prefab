@@ -121,9 +121,7 @@ MonoBehaviour:
   _allInteractableObject: []
   timerForSearchObject: 0.5
   closestObject: {fileID: 0}
-  interactableLayers:
-    serializedVersion: 2
-    m_Bits: 64
+  radiusDetectionObject: 3
 --- !u!114 &7216021332785205101
 MonoBehaviour:
   m_ObjectHideFlags: 0

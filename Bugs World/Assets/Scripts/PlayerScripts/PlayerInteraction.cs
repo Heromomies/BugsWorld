@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Pinwheel.Griffin.Wizard;
 using UnityEngine;
+using Object = System.Object;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [SerializeField] private Transform closestObject;
 
-    
+    [SerializeField] private float radiusDetectionObject = 1.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         SearchForInteractableObject();
     }
-
+    
     void SearchForInteractableObject()
     {
         if (Time.time > _nexTimerForSearchObject)
@@ -33,9 +34,38 @@ public class PlayerInteraction : MonoBehaviour
             if (_allInteractableObject.Count > 0)
             {
                 closestObject = GetClosestObject(_allInteractableObject.ToArray());
-                closestObject.gameObject.layer = LayerMask.NameToLayer("Outlines");
-                _nexTimerForSearchObject = Time.time + timerForSearchObject;
+                float dist = Vector3.Distance(transform.position, closestObject.position);
+                CheckInteractableObjectDistance(dist);
             }
+             _nexTimerForSearchObject = Time.time + timerForSearchObject;
+        }
+    }
+
+    void CheckInteractableObjectDistance(float distance)
+    {
+        if (distance < radiusDetectionObject)
+        {
+            if (closestObject.transform.childCount > 0)
+            {
+                Transform[] allChildren = closestObject.GetComponentsInChildren<Transform>();
+                foreach(var obj in allChildren)
+                {
+                    obj.gameObject.layer = LayerMask.NameToLayer("Outlines");
+                }
+            }
+            closestObject.gameObject.layer = LayerMask.NameToLayer("Outlines");
+        }
+        else if (distance > radiusDetectionObject)
+        {
+            if (closestObject.transform.childCount > 0)
+            {
+                Transform[] allChildren = closestObject.GetComponentsInChildren<Transform>();
+                foreach(var obj in allChildren)
+                {
+                    obj.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
+            }
+            closestObject.gameObject.layer = LayerMask.NameToLayer("Default");
         }
     }
 
@@ -53,8 +83,6 @@ public class PlayerInteraction : MonoBehaviour
                 closestDistanceSqr = dSqrToTarget;
                 bestTarget = potentialTarget.transform;
             }
-
-            potentialTarget.layer = LayerMask.NameToLayer("Default");
 
         }
 
@@ -81,8 +109,6 @@ public class PlayerInteraction : MonoBehaviour
             if (_allInteractableObject.Contains(other.gameObject))
             {
                 GameObject distantObject = other.gameObject;
-                
-                distantObject.gameObject.layer = LayerMask.NameToLayer("Default");
                 closestObject = null;
                 _allInteractableObject.Remove(distantObject);
             }
