@@ -40,9 +40,9 @@ public class PlayerInteraction : MonoBehaviour
     IEnumerator SearchForInsects()
     {
         canInteract = false;
-        float percentage = Random.value;
+        float percentage = Mathf.Round(Random.value * 100);
         Debug.Log(percentage);
-        if (percentage > 0.3)
+        if (percentage > 30f)
         {
             Debug.Log("You discover a new insect !");
             ResetInteractionObject();
