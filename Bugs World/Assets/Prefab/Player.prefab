@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7216021332785205098}
   - component: {fileID: 7216021332785205100}
   - component: {fileID: 5477162532370580327}
+  - component: {fileID: 3130486260287182616}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -122,6 +123,7 @@ MonoBehaviour:
   timerForSearchObject: 0.5
   closestObject: {fileID: 0}
   radiusDetectionObject: 3
+  canInteract: 0
 --- !u!114 &7216021332785205101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   appliedMovement: {x: 0, y: 0, z: 0}
   isRunPressed: 0
   isMovementPressed: 0
+  isInteractionPressed: 0
   walkMultiplier: 4
   runMultiplier: 8
   rotationPower: 15
@@ -201,6 +204,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &3130486260287182616
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7216021332785205079}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7216021334027413303
 GameObject:
   m_ObjectHideFlags: 0

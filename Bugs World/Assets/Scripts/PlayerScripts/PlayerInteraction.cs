@@ -19,11 +19,10 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private float radiusDetectionObject = 1.5f;
 
     public bool canInteract;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -32,19 +31,20 @@ public class PlayerInteraction : MonoBehaviour
         SearchForInteractableObject();
         if (canInteract && Player.instance.isInteractionPressed)
         {
-           StartCoroutine(SearchForInsects());
-           
+            StartCoroutine(SearchForInsects(closestObject.gameObject));
         }
     }
 
-    IEnumerator SearchForInsects()
+    IEnumerator SearchForInsects(GameObject objectInteractable)
     {
         canInteract = false;
         float percentage = Mathf.Round(Random.value * 100);
+        TakeInsect takeInsect = objectInteractable.GetComponent<TakeInsect>();
         Debug.Log(percentage);
         if (percentage > 30f)
         {
             Debug.Log("You discover a new insect !");
+            takeInsect.TryTakeInsect();
             ResetInteractionObject();
             yield return null;
         }
@@ -66,10 +66,10 @@ public class PlayerInteraction : MonoBehaviour
                 obj.gameObject.layer = LayerMask.NameToLayer("Default");
             }
         }
+
         _allInteractableObject.Remove(closestObject.gameObject);
         closestObject.gameObject.layer = LayerMask.NameToLayer("Default");
         closestObject = null;
-        
     }
 
     void SearchForInteractableObject()

@@ -11,6 +11,11 @@ public class TakeInsect : MonoBehaviour
 		EncyclopediaManager.Instance.AddObjectsToEncyclopedia(soInsect);
 	}
 
+	public void TryTakeInsect()
+	{
+		EncyclopediaManager.Instance.AddObjectsToEncyclopedia(soInsect);
+	}
+
 	private void OnApplicationQuit() // Quand on quitte l'application, les insectes ne sont plus trouvés
 	{
 		soInsect.found = false;
