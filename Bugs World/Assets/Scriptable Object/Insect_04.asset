@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0fb1765de3d324ab5de2ef81910638, type: 3}
   m_Name: Insect_04
   m_EditorClassIdentifier: 
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: 5f7fa9a7940a64e79b5a42d9f661d42c, type: 3}
   name: butterfly
   found: 0
   id: 3

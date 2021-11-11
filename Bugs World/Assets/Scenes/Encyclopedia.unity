@@ -1390,6 +1390,115 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1160469545093960230, guid: e22e69a02da32e1409c2ebfcae8ae47f, type: 3}
   m_PrefabInstance: {fileID: 1250775680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1278837260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278837265}
+  - component: {fileID: 1278837264}
+  - component: {fileID: 1278837263}
+  - component: {fileID: 1278837262}
+  - component: {fileID: 1278837261}
+  m_Layer: 0
+  m_Name: Test (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1278837261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278837260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f4608f0283357478e32cec95ecca78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soInsect: {fileID: 11400000, guid: 70fae7e175529324b8bae4311d3488c3, type: 2}
+--- !u!65 &1278837262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278837260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1278837263
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278837260}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 3d2a23eda7a2b554795c6c73969335e7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1278837264
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278837260}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1278837265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278837260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.41, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1495117119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,8 +2011,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 300, y: 400}
-  m_Constraint: 2
-  m_ConstraintCount: 2
+  m_Constraint: 0
+  m_ConstraintCount: 4
 --- !u!1001 &2049121166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2307,7 +2416,7 @@ PrefabInstance:
       objectReference: {fileID: 1039445146}
     - target: {fileID: 7698297476442046899, guid: 98e60993fbf55c24384c8aee0bb843fa, type: 3}
       propertyPath: placesForInsect.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7698297476442046899, guid: 98e60993fbf55c24384c8aee0bb843fa, type: 3}
       propertyPath: placesForInsect.Array.data[0]
@@ -2349,6 +2458,10 @@ PrefabInstance:
       propertyPath: placesForInsect.Array.data[9]
       value: 
       objectReference: {fileID: 413052969}
+    - target: {fileID: 7698297476442046899, guid: 98e60993fbf55c24384c8aee0bb843fa, type: 3}
+      propertyPath: placesForInsect.Array.data[10]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7698297476442046900, guid: 98e60993fbf55c24384c8aee0bb843fa, type: 3}
       propertyPath: m_RootOrder
       value: 2
